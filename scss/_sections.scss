@@ -244,42 +244,43 @@
   }
   &__badges {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-top: 24px;
     @include mq(sp) {
-      gap: 6px;
-      margin-top: 16px;
+      justify-content: center; // 3つの丸を中央にそろえる
+      gap: 12px;
+      margin-top: 18px;
     }
     li {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 116px;
-      height: 116px;
+      width: 112px;
+      height: 112px;
       border: 3px solid $c-blue;
       border-radius: 50%;
-      font-size: 20px;
+      font-size: 23px;
       font-weight: 900;
-      line-height: 1.25;
+      line-height: 1.2;
+      letter-spacing: 0;
       text-align: center;
       color: $c-red;
       background: $c-white;
       @include mq(sp) {
-        flex: 1;
-        width: auto;
-        height: auto;
-        aspect-ratio: 1;
-        max-width: 108px;
+        flex-shrink: 0;
+        width: 98px;
+        height: 98px;
         border-width: 2px;
-        font-size: 16px;
+        font-size: 20px;
       }
     }
     b {
-      font-size: 14px;
+      margin-bottom: 2px;
+      font-size: 15px;
       color: $c-blue;
       @include mq(sp) {
-        font-size: 11px;
+        font-size: 13px;
       }
     }
   }
