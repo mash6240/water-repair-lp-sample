@@ -1,0 +1,48 @@
+@use "sass:map";
+
+// ===== Colors =====
+$c-text: #1f2a37;
+$c-sub: #5b6b7d;
+$c-blue: #0b5cad;
+$c-blue-dark: #084684;
+$c-blue-mid: #3a8ee6;
+$c-blue-light: #e6f1fc;
+$c-orange: #ff7a00;
+$c-orange-dark: #e56a00;
+$c-green: #16a34a;
+$c-green-dark: #11833b;
+$c-yellow: #ffe14d;
+$c-red: #e0352b;
+$c-bg: #fff;
+$c-bg-gray: #f4f7fa;
+$c-line: #dbe3ec;
+$c-white: #fff;
+
+// ===== Fonts =====
+$f-base: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+$f-num: "Oswald", $f-base;
+
+// ===== Layout =====
+$header-h: 72px;
+$header-h-sp: 56px;
+$fixed-cta-h: 64px;
+
+$bp: (
+  sp: "(max-width: 767px)",
+  tab: "(max-width: 1023px)",
+  pc: "(min-width: 768px)",
+);
+
+@mixin mq($key) {
+  @media #{map.get($bp, $key)} {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}

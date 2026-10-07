@@ -1,0 +1,1239 @@
+@use "sass:color";
+@use "settings" as *;
+
+// =====================================================
+// Sample bar
+// =====================================================
+.sample-bar {
+  padding: 6px 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  color: $c-white;
+  background: #374151;
+}
+
+// =====================================================
+// Header
+// =====================================================
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $c-white;
+  border-bottom: 1px solid $c-line;
+  transition: box-shadow 0.2s;
+  &.is-scrolled {
+    box-shadow: 0 4px 16px rgba(11, 92, 173, 0.12);
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 1200px;
+    height: $header-h;
+    margin: 0 auto;
+    padding: 0 24px;
+    @include mq(sp) {
+      gap: 8px;
+      height: $header-h-sp;
+      padding: 0 12px;
+    }
+  }
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    line-height: 1.4;
+    background: $c-bg-gray;
+    b {
+      color: $c-blue;
+    }
+    @include mq(tab) {
+      display: none;
+    }
+  }
+  &__tel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px 8px 16px;
+    border-radius: 10px;
+    color: $c-white;
+    background: $c-green;
+    transition: background-color 0.2s;
+    @include hover {
+      background: $c-green-dark;
+    }
+    @include mq(tab) {
+      margin-left: auto;
+    }
+    @include mq(sp) {
+      flex-shrink: 0;
+      gap: 6px;
+      padding: 6px 10px 6px 8px;
+      border-radius: 8px;
+    }
+    svg {
+      width: 26px;
+      height: 26px;
+      @include mq(sp) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  &__tel-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    small {
+      font-size: 11px;
+      font-weight: 700;
+      @include mq(sp) {
+        font-size: 9px;
+      }
+    }
+    .num {
+      font-size: 26px;
+      white-space: nowrap;
+      @include mq(sp) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  &__mark {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    @include mq(sp) {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    font-size: 19px;
+    font-weight: 900;
+    line-height: 1.25;
+    color: $c-blue;
+    white-space: nowrap;
+    @include mq(sp) {
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+    small {
+      font-size: 11px;
+      font-weight: 700;
+      color: $c-sub;
+      @include mq(sp) {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+// =====================================================
+// FV
+// =====================================================
+.fv {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(58, 142, 230, 0.18), transparent 45%),
+    linear-gradient(160deg, $c-blue-light 0%, #f7fbff 60%, $c-white 100%);
+  &::before {
+    // 水面のような波模様
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30c120-20 240-20 360 0s240 20 360 0 240-20 360 0 240 20 360 0v30H0z' fill='%23ffffff'/%3E%3C/svg%3E") center bottom / 100% 100% no-repeat;
+    pointer-events: none;
+  }
+  &__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    align-items: center;
+    gap: 40px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 24px 88px;
+    @include mq(tab) {
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+    }
+    @include mq(sp) {
+      display: block;
+      padding: 24px 16px 64px;
+    }
+  }
+  &__area {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 16px;
+    border: 2px solid $c-blue;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: $c-blue;
+    background: $c-white;
+    @include mq(sp) {
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+    span {
+      padding: 4px 10px;
+      color: $c-white;
+      background: $c-blue;
+    }
+    padding-right: 10px;
+    span {
+      margin-right: 8px;
+    }
+  }
+  &__title {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    @include mq(tab) {
+      font-size: 36px;
+    }
+    @include mq(sp) {
+      font-size: 26px;
+    }
+    em {
+      font-style: normal;
+      color: $c-red;
+      background: linear-gradient(transparent 68%, $c-yellow 68%);
+      .num {
+        font-size: 1.5em;
+        line-height: 1;
+      }
+    }
+  }
+  &__title-small {
+    display: table;
+    margin-bottom: 8px;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-size: 20px;
+    color: $c-white;
+    background: $c-blue;
+    @include mq(sp) {
+      font-size: 15px;
+    }
+  }
+  &__badges {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    @include mq(sp) {
+      gap: 6px;
+      margin-top: 16px;
+    }
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 116px;
+      height: 116px;
+      border: 3px solid $c-blue;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      color: $c-red;
+      background: $c-white;
+      @include mq(sp) {
+        flex: 1;
+        width: auto;
+        height: auto;
+        aspect-ratio: 1;
+        max-width: 108px;
+        border-width: 2px;
+        font-size: 16px;
+      }
+    }
+    b {
+      font-size: 14px;
+      color: $c-blue;
+      @include mq(sp) {
+        font-size: 11px;
+      }
+    }
+  }
+  &__price {
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: $c-white;
+    box-shadow: 0 6px 20px rgba(11, 92, 173, 0.12);
+    @include mq(sp) {
+      margin-top: 16px;
+      padding: 12px 14px;
+    }
+  }
+  &__price-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: $c-sub;
+    @include mq(sp) {
+      font-size: 12px;
+    }
+  }
+  &__price-value {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: $c-text;
+    @include mq(sp) {
+      font-size: 16px;
+    }
+    .num {
+      margin: 0 2px 0 10px;
+      font-size: 56px;
+      color: $c-red;
+      @include mq(sp) {
+        font-size: 44px;
+      }
+    }
+    small {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+  &__price-note {
+    margin-top: 4px;
+    font-size: 13px;
+    color: $c-sub;
+    @include mq(sp) {
+      font-size: 11px;
+    }
+  }
+  &__cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .btn {
+      padding: 10px 16px;
+    }
+  }
+  &__visual {
+    position: relative;
+    @include mq(sp) {
+      display: none;
+    }
+  }
+  &__illust {
+    width: 100%;
+    height: auto;
+    animation: float 4s ease-in-out infinite;
+  }
+  &__visual-label {
+    position: absolute;
+    top: 0;
+    left: -8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.3;
+    text-align: center;
+    color: $c-white;
+    background: $c-orange;
+    box-shadow: 0 6px 16px rgba(255, 122, 0, 0.35);
+    transform: rotate(-8deg);
+    @include mq(tab) {
+      width: 104px;
+      height: 104px;
+      font-size: 13px;
+    }
+    .num {
+      font-size: 30px;
+      line-height: 1.1;
+      @include mq(tab) {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// =====================================================
+// Trouble
+// =====================================================
+.trouble {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    @include mq(sp) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+  &__item {
+    padding: 28px 16px 24px;
+    border: 2px solid $c-blue-light;
+    border-radius: 14px;
+    text-align: center;
+    background: $c-white;
+    @include mq(sp) {
+      padding: 16px 8px;
+      border-radius: 10px;
+    }
+    svg {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 10px;
+      padding: 6px;
+      border-radius: 50%;
+      background: $c-blue-light;
+      @include mq(sp) {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 6px;
+      }
+    }
+    h3 {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.4;
+      color: $c-blue;
+      @include mq(sp) {
+        font-size: 15px;
+      }
+    }
+    p {
+      margin-top: 4px;
+      font-size: 14px;
+      color: $c-sub;
+      @include mq(sp) {
+        font-size: 12px;
+      }
+    }
+  }
+  &__note {
+    max-width: 720px;
+    margin: 32px auto 0;
+    padding: 16px 20px;
+    border-left: 5px solid $c-orange;
+    border-radius: 6px;
+    font-weight: 700;
+    background: #fff5eb;
+    @include mq(sp) {
+      margin-top: 20px;
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+  }
+}
+
+// =====================================================
+// Price
+// =====================================================
+.price {
+  background: $c-bg-gray;
+  &__lead {
+    margin-bottom: 24px;
+    text-align: center;
+    @include mq(sp) {
+      text-align: left;
+      font-size: 14px;
+    }
+    b {
+      color: $c-red;
+      background: linear-gradient(transparent 65%, $c-yellow 65%);
+    }
+  }
+  &__table-wrap {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(31, 42, 55, 0.08);
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: $c-white;
+    th,
+    td {
+      padding: 16px 24px;
+      border-bottom: 1px solid $c-line;
+      text-align: left;
+      @include mq(sp) {
+        padding: 12px 12px;
+        font-size: 14px;
+      }
+    }
+    thead th {
+      font-size: 15px;
+      color: $c-white;
+      background: $c-blue;
+      @include mq(sp) {
+        font-size: 13px;
+      }
+    }
+    tbody th {
+      font-weight: 700;
+    }
+    td {
+      width: 38%;
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+      .num {
+        margin-right: 2px;
+        font-size: 26px;
+        color: $c-red;
+        @include mq(sp) {
+          font-size: 21px;
+        }
+      }
+    }
+    thead th:last-child {
+      text-align: right;
+    }
+    tbody tr:last-child > * {
+      border-bottom: 0;
+    }
+    tbody tr:nth-child(even) {
+      background: #fafcfe;
+    }
+  }
+  &__points {
+    display: grid;
+    gap: 8px;
+    margin-top: 24px;
+    li {
+      position: relative;
+      padding-left: 32px;
+      font-weight: 700;
+      @include mq(sp) {
+        font-size: 14px;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0.25em;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: $c-green url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
+      }
+    }
+  }
+}
+
+// =====================================================
+// Reason
+// =====================================================
+.reason {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  &__item {
+    position: relative;
+    padding: 36px 28px 28px;
+    border-radius: 14px;
+    background: $c-blue-light;
+    @include mq(sp) {
+      padding: 24px 18px 20px 76px;
+    }
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.45;
+      color: $c-blue;
+      @include mq(sp) {
+        margin-bottom: 6px;
+        font-size: 17px;
+      }
+    }
+    p:not(.reason__num) {
+      font-size: 15px;
+      @include mq(sp) {
+        font-size: 14px;
+      }
+    }
+  }
+  &__num {
+    margin-bottom: 8px;
+    font-family: $f-num;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    color: $c-blue-mid;
+    @include mq(sp) {
+      position: absolute;
+      top: 22px;
+      left: 18px;
+      margin: 0;
+      font-size: 40px;
+    }
+  }
+}
+
+// =====================================================
+// CTA band
+// =====================================================
+.cta-band {
+  padding: 48px 24px;
+  background:
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0 12px, transparent 12px 24px),
+    $c-blue;
+  @include mq(sp) {
+    padding: 36px 16px;
+  }
+  &__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__copy {
+    margin-bottom: 24px;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.5;
+    color: $c-white;
+    @include mq(sp) {
+      margin-bottom: 18px;
+      font-size: 17px;
+    }
+  }
+  &__btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+}
+
+// =====================================================
+// Flow
+// =====================================================
+.flow {
+  background: $c-bg-gray;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    counter-reset: flow;
+    @include mq(tab) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+  &__item {
+    position: relative;
+    padding: 24px 20px;
+    border-radius: 14px;
+    background: $c-white;
+    box-shadow: 0 4px 14px rgba(31, 42, 55, 0.06);
+    @include mq(sp) {
+      padding: 18px 18px;
+    }
+    &:not(:last-child)::after {
+      // 次のステップへの矢印
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -24px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 12px;
+      border-color: transparent transparent transparent $c-blue-mid;
+      transform: translateY(-50%);
+      @include mq(tab) {
+        display: none;
+      }
+      @include mq(sp) {
+        display: block;
+        top: auto;
+        bottom: -19px;
+        right: 50%;
+        border-width: 12px 10px 0 10px;
+        border-color: $c-blue-mid transparent transparent transparent;
+        transform: translateX(50%);
+      }
+    }
+    h3 {
+      margin: 8px 0 6px;
+      font-size: 18px;
+      font-weight: 900;
+      color: $c-blue;
+      @include mq(sp) {
+        font-size: 17px;
+      }
+    }
+    p {
+      font-size: 14px;
+      color: $c-sub;
+    }
+  }
+  &__step {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 999px;
+    font-family: $f-num;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: $c-white;
+    background: $c-orange;
+  }
+}
+
+// =====================================================
+// Case
+// =====================================================
+.case {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid $c-line;
+    border-radius: 14px;
+    background: $c-white;
+    @include mq(sp) {
+      padding: 18px;
+    }
+    h3 {
+      margin: 10px 0 16px;
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+  }
+  &__tag {
+    align-self: flex-start;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: $c-blue;
+    background: $c-blue-light;
+  }
+  &__data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background: $c-line;
+    div {
+      padding: 8px 12px;
+      background: $c-bg-gray;
+    }
+    dt {
+      font-size: 12px;
+      color: $c-sub;
+    }
+    dd {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4;
+      .num {
+        font-size: 20px;
+        color: $c-red;
+      }
+    }
+  }
+}
+
+// =====================================================
+// Voice
+// =====================================================
+.voice {
+  background: $c-blue-light;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px 22px;
+    border-radius: 14px;
+    background: $c-white;
+    @include mq(sp) {
+      padding: 20px 18px 16px;
+    }
+    &::before {
+      content: "“";
+      position: absolute;
+      top: -6px;
+      right: 18px;
+      font-family: Georgia, serif;
+      font-size: 72px;
+      line-height: 1;
+      color: $c-blue-light;
+    }
+  }
+  &__stars {
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: #f5a400;
+  }
+  &__text {
+    flex: 1;
+    margin: 8px 0 14px;
+    font-size: 15px;
+    @include mq(sp) {
+      font-size: 14px;
+    }
+  }
+  &__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: $c-sub;
+    text-align: right;
+  }
+}
+
+// =====================================================
+// Area
+// =====================================================
+.area {
+  &__lead {
+    margin-bottom: 24px;
+    text-align: center;
+    @include mq(sp) {
+      text-align: left;
+      font-size: 14px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    @include mq(sp) {
+      gap: 8px;
+    }
+    li {
+      padding: 6px 18px;
+      border: 1px solid $c-line;
+      border-radius: 999px;
+      font-weight: 700;
+      background: $c-bg-gray;
+      @include mq(sp) {
+        padding: 4px 14px;
+        font-size: 14px;
+      }
+      &.is-main {
+        border-color: $c-blue;
+        color: $c-white;
+        background: $c-blue;
+      }
+    }
+  }
+}
+
+// =====================================================
+// FAQ
+// =====================================================
+.faq {
+  background: $c-bg-gray;
+  &__list {
+    display: grid;
+    gap: 12px;
+  }
+  &__item {
+    border-radius: 10px;
+    background: $c-white;
+    box-shadow: 0 2px 8px rgba(31, 42, 55, 0.05);
+    h3 {
+      font-size: inherit;
+    }
+  }
+  &__q {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 18px 56px 18px 56px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: left;
+    background: transparent;
+    cursor: pointer;
+    @include mq(sp) {
+      padding: 14px 44px 14px 46px;
+      font-size: 15px;
+    }
+    &::before {
+      content: "Q";
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-family: $f-num;
+      font-size: 15px;
+      color: $c-white;
+      background: $c-blue;
+      transform: translateY(-50%);
+      @include mq(sp) {
+        left: 12px;
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+      }
+    }
+    &::after {
+      // +/- アイコン
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 14px;
+      height: 14px;
+      background:
+        linear-gradient($c-blue, $c-blue) center / 100% 2px no-repeat,
+        linear-gradient($c-blue, $c-blue) center / 2px 100% no-repeat;
+      transform: translateY(-50%);
+      transition: transform 0.25s;
+      @include mq(sp) {
+        right: 16px;
+      }
+    }
+    &[aria-expanded="true"]::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+  &__a {
+    position: relative;
+    padding: 0 24px 20px 56px;
+    @include mq(sp) {
+      padding: 0 16px 16px 46px;
+      font-size: 14px;
+    }
+    &::before {
+      content: "A";
+      position: absolute;
+      top: 0;
+      left: 16px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-family: $f-num;
+      font-size: 15px;
+      color: $c-white;
+      background: $c-orange;
+      @include mq(sp) {
+        left: 12px;
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+// =====================================================
+// Contact
+// =====================================================
+.contact {
+  background: linear-gradient(180deg, $c-blue 0%, $c-blue-dark 100%);
+  &__tel {
+    margin-bottom: 32px;
+    padding: 20px;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 14px;
+    text-align: center;
+    color: $c-white;
+    @include mq(sp) {
+      margin-bottom: 24px;
+      padding: 16px 12px;
+    }
+  }
+  &__tel-label {
+    font-size: 15px;
+    font-weight: 700;
+    @include mq(sp) {
+      font-size: 13px;
+    }
+  }
+  &__tel-num {
+    font-size: 52px;
+    line-height: 1.2;
+    color: $c-yellow;
+    @include mq(sp) {
+      font-size: 38px;
+    }
+  }
+  &__tel-note {
+    font-size: 12px;
+    opacity: 0.85;
+  }
+}
+
+.form {
+  padding: 36px 40px;
+  border-radius: 16px;
+  background: $c-white;
+  @include mq(sp) {
+    padding: 22px 16px;
+  }
+  &__lead {
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    @include mq(sp) {
+      font-size: 14px;
+    }
+  }
+  &__row {
+    margin-bottom: 18px;
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  &__req,
+  &__opt {
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.6;
+    color: $c-white;
+  }
+  &__req {
+    background: $c-red;
+  }
+  &__opt {
+    background: #9aa5b1;
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 14px;
+    border: 2px solid $c-line;
+    border-radius: 8px;
+    font-size: 16px; // iOSのズーム防止
+    background: $c-bg-gray;
+    transition: border-color 0.2s, background-color 0.2s;
+    &:focus {
+      outline: none;
+      border-color: $c-blue-mid;
+      background: $c-white;
+    }
+    &.is-error {
+      border-color: $c-red;
+      background: #fff5f5;
+    }
+    &::placeholder {
+      color: #a0aab5;
+    }
+  }
+  select.form__input {
+    appearance: none;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%230b5cad' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+  }
+  textarea.form__input {
+    resize: vertical;
+  }
+  &__error {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: $c-red;
+    &:empty {
+      display: none;
+    }
+  }
+  &__submit {
+    display: flex;
+    width: 100%;
+    margin-top: 28px;
+  }
+  &__note {
+    margin-top: 12px;
+    font-size: 12px;
+    text-align: center;
+    color: $c-sub;
+  }
+  &__done {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border: 2px solid $c-green;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #effbf3;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__done-title {
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 900;
+    color: $c-green-dark;
+  }
+}
+
+// =====================================================
+// Footer
+// =====================================================
+.footer {
+  padding: 36px 0;
+  text-align: center;
+  color: #c9d3de;
+  background: #14202e;
+  &__logo {
+    font-size: 18px;
+    font-weight: 900;
+    color: $c-white;
+  }
+  &__info {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+  &__copy {
+    margin-top: 14px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}
+
+// =====================================================
+// Fixed CTA (SP only)
+// =====================================================
+.fixed-cta {
+  display: none;
+  @include mq(sp) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    grid-auto-rows: $fixed-cta-h - 16px;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -4px 14px rgba(31, 42, 55, 0.12);
+    transform: translateY(110%);
+    transition: transform 0.3s ease;
+    &.is-show {
+      transform: none;
+    }
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: $c-white;
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+    span {
+      display: flex;
+      flex-direction: column;
+    }
+    small {
+      font-size: 10px;
+      font-weight: 700;
+    }
+    &--tel {
+      background: $c-green;
+    }
+    &--web {
+      background: $c-orange;
+    }
+  }
+}

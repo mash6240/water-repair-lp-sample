@@ -1,0 +1,94 @@
+@use "settings" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $header-h + 12px;
+  @include mq(sp) {
+    scroll-padding-top: $header-h-sp + 8px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $f-base;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: $c-text;
+  background: $c-bg;
+  -webkit-font-smoothing: antialiased;
+  @include mq(sp) {
+    font-size: 15px;
+    padding-bottom: $fixed-cta-h;
+  }
+}
+
+h1, h2, h3, p, ul, ol, dl, dd, table {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid $c-orange;
+  outline-offset: 2px;
+}
+
+// 見出し・短いテキストは文節で改行（対応ブラウザのみ）
+h1, h2, h3,
+.trouble__item p,
+.cta-band__copy,
+.faq__q {
+  word-break: auto-phrase;
+  text-wrap: balance;
+}
+
+.num {
+  font-family: $f-num;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.sp-only {
+  display: none;
+  @include mq(sp) {
+    display: inline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
